@@ -104,8 +104,29 @@ class Tree {
         return node
     }
 
-    
+    find(value) {
+        let node = this.root
 
+       function traverse(node, value) {
+            if (node === null) {
+                return node
+            }
+
+            if (node.data === value) {
+                return node
+            }
+
+            if (node.data > value) {
+                return traverse(node.left, value)
+            } else {
+                return traverse(node.right, value)
+            }
+        }
+        return traverse(node, value)
+    }
+
+    
+ 
 }
 
 // Test MergeSort
@@ -183,3 +204,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 testBST.insert(5)
 testBST.remove(4)
 prettyPrint(testBST.root)
+
